@@ -1,2 +1,2 @@
 # bigdata
-Content and files for the Big Data training
+Contenidos y ficheros para seguir el curso de Big Data
