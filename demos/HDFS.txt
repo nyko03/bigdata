@@ -1,0 +1,32 @@
+Configuración: /etc/Hadoop/conf/hdfs-site.xml
+
+Hadoop fs –ls /
+
+dd if=/dev/urandom of=data.txt bs=64M count=40
+
+
+hadoop fs -copyFromLocal data.txt /example/data/data.txt
+
+Subir Ficheros:
+	Crear desde portal Azure carpeta y subir ficheros
+	comprobar desde BASH en la conexión Azure que los temenos
+
+scp /usr/it/clouddrive/test/stores.csv sshuser@hdpDemoLCG-ssh.azurehdinsight.net:/home/sshuser/data
+
+
+hadoop fs -mkdir /curso
+hadoop fs -cp hdfs:///labs/samples hdfs:///labs/samples2
+hadoop fs –rm –r  /labs/samples2
+hadoop fs -mkdir /labs/samples2
+hadoop fs -cp -p hdfs:///labs/samples hdfs:///labs/samples2
+
+hadoop archive -archiveName images.har -p /labs/ samples/ samples2/ /labs/archive
+hadoop fs -ls /labs/archive/images.har
+
+hadoop fs –ls har:///labs/archive/images.har
+hadoop fs -rm -r /labs/samples
+hadoop fs -rm -r /labs/samples2
+
+
+hadoop fs -mkdir /data/logs
+hadoop fs -cp /HdiSamples/HdiSamples/WebsiteLogSampData/SampleLog/909f2b.log /data/logs/909f2B.log
